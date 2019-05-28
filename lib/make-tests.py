@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from . import Test
+from test import Test
 import os, yaml, asyncio, sys
 
 def test_features(file):
@@ -10,7 +10,7 @@ def test_features(file):
             tests = []
             scenarios = yaml.safe_load(stream)
             for key, scenario in scenarios['scenarios'].items():
-                tests.append(Test(os.path.join(current_path, 'scenarios', scenario)))
+                tests.append(Test(os.path.join(current_path, '..', 'scenarios', scenario)))
 
         except yaml.YAMLError as exc:
             print(exc)
@@ -19,6 +19,6 @@ def test_features(file):
         asyncio.get_event_loop().run_until_complete(test.start())
 
 if ".feature" in sys.argv[1]:
-    asyncio.get_event_loop().run_until_complete(Test(sys.argv[1]).start())
+    asyncio.get_event_loop().run_until_complete(test.Test(sys.argv[1]).start())
 else:
     test_features(sys.argv[1])

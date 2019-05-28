@@ -1,5 +1,5 @@
 from pyppeteer import launch
-from .logger import Logger
+import logger
 from gherkin_parser.parser import parse_from_filename, parse_file, parse_lines
 import os, sys, yaml
 import asyncio
@@ -7,7 +7,7 @@ import asyncio
 class Test:
     def __init__(self, feature_file_name):
         self.page = None
-        self.logger = Logger()
+        self.logger = logger.Logger()
         self.feature = parse_from_filename(feature_file_name)
 
     async def start(self):
@@ -55,7 +55,7 @@ class Test:
 
     async def setPage(self):
         if self.page == None:
-            self.browser = await launch()
+            self.browser = await launch({"args": ['--no-sandbox']})
             self.page = await self.browser.newPage()
 
     # I go on "http://myurl"
