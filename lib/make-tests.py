@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-from lib import Test
+from . import Test
 import os, yaml, asyncio, sys
 
 def test_features(file):
     current_path = os.path.dirname(os.path.realpath(__file__))
-    file_path = os.path.join(current_path, 'scenarios', file + '.yml')
+    file_path = os.path.join(current_path, '..', 'scenarios', file + '.yml')
     with open(file_path, 'r') as stream:
         try:
             tests = []

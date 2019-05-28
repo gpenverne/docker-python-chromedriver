@@ -5,4 +5,5 @@ services:
         image: gpenverne/python-puppeteer:latest
         volumes:
             - ./scenarios:/var/scenarios
+            - ./lib:/var/lib
         working_dir: /var/
