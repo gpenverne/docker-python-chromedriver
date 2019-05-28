@@ -1,0 +1,6 @@
+pyppeteer
+asyncio
+colorama
+gherkin-parser
+python-slugify
+pyyaml

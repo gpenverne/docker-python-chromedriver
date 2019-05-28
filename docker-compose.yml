@@ -1,0 +1,8 @@
+version: '3.6'
+
+services:
+    puppeteer:
+        image: gpenverne/python-puppeteer:latest
+        volumes:
+            - ./scenarios:/var/scenarios
+        working_dir: /var/
