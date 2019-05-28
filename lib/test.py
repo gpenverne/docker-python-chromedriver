@@ -68,7 +68,8 @@ class Test:
 
     # I type "something" in field "#query"
     async def i_type_in_field(self, value, field_query_selector):
-        await self.page.querySelector(field_query_selector)
+        dom_element = await self.page.querySelector(field_query_selector)
+        await self.page.evaluate('(element) => element.value = \'\'', dom_element)
         await self.page.focus(field_query_selector)
         await self.page.keyboard.type(value)
 
