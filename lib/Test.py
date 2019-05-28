@@ -46,11 +46,7 @@ class Test:
                 await self.take_a_screenshot()
                 self.logger.info("\tA screenshot is available for debug")
                 sys.exit(1)
-#     test = Test()
-#     await test.setPage()
-#     await test.i_go_on('http://localhost:8000')
-#     await test.i_should_be_on('http://localhost:8000/')
-#
+
     async def i_execute_the_script(self, script_path):
          import subprocess
          res = subprocess.check_output(script_path.split(' '))
@@ -65,7 +61,6 @@ class Test:
     # I go on "http://myurl"
     async def i_go_on(self, url):
         await self.page.goto(url)
-        #await self.page.waitForNavigation({})
 
     # Take a screenshot
     async def take_a_screenshot(self):
