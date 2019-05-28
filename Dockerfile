@@ -15,5 +15,6 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 # install pupeteer dependencies
-RUN pip3 install pyppeteer asyncio gherkin-parser colorama pyyaml
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
 RUN adduser --disabled-password --gecos "" puppeteer
