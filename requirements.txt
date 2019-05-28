@@ -1,5 +1,0 @@
-pyppeteer
-asyncio
-colorama
-gherkin-parser
-pyyaml

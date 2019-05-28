@@ -7,7 +7,7 @@ RUN apt-get -y update
 RUN apt-get install -y google-chrome-stable
 
 # install chromedriver
-RUN apt-get install -yqq unzip sudo
+RUN apt-get install -yqq unzip sudo python3-pip
 RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
@@ -15,8 +15,8 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 # install pupeteer dependencies
-COPY requirements.txt ./
-RUN pip3 install -r requirements.txt
-RUN adduser --disabled-password --gecos "" puppeteer
+RUN sudo /usr/bin/python3.5 -m pip install pyppeteer asyncio colorama gherkin-parser pyyaml
 
+# copy puppeteer test utils
 COPY lib/* /puppeteer/
+RUN ln -s /puppeteer/puppeteer.py /usr/bin/puppeteer

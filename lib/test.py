@@ -47,12 +47,6 @@ class Test:
                 self.logger.info("\tA screenshot is available for debug")
                 sys.exit(1)
 
-    async def i_execute_the_script(self, script_path):
-         import subprocess
-         res = subprocess.check_output(script_path.split(' '))
-         for line in res.splitlines():
-            self.logger.info(line.decode())
-
     async def setPage(self):
         if self.page == None:
             self.browser = await launch({"args": ['--no-sandbox']})
