@@ -17,5 +17,3 @@ ENV DISPLAY=:99
 # install pupeteer dependencies
 RUN pip3 install pyppeteer asyncio gherkin-parser colorama pyyaml
 RUN adduser --disabled-password --gecos "" puppeteer
-
-ENTRYPOINT ["sudo", "-u", "puppeteer", "python3", "/var/make-tests.py", "/var/scenarios/$@"]
